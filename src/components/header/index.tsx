@@ -1,13 +1,16 @@
 import './index.scss';
-import { Input, Avatar, Button } from 'antd';
+import { Input, Avatar, Button, Image } from 'antd';
 import { UserOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-
+import logoBee from '../../assets/images/1740063267602.gif'
 const Header = () => {
   const navigate = useNavigate();
   return (
     <div className="header">
-      <div style={{cursor: 'pointer'}} onClick={() => navigate("/home")} className="logo">Todo List</div>
+      <div className='wrapper-header-main-homeScreen'>
+        <h6 style={{ cursor: 'pointer' }} onClick={() => navigate("/home")} className="logo">ChronoBuddy</h6>
+        <Image onClick={() => navigate("/home")} preview={false} src={logoBee} width={40} height={40} />
+      </div>
       <Input
         placeholder="Search tasks..."
         prefix={<SearchOutlined />}
