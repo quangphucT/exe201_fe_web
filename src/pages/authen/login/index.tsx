@@ -1,6 +1,6 @@
 import './index.scss';
 import { Input, Button } from 'antd';
-import { ArrowLeftOutlined } from '@ant-design/icons';
+
 import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import logoBee from '../../../assets/images/1740063267602.gif'
