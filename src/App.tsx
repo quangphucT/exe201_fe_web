@@ -12,6 +12,7 @@ import ResetPasswordPage from "./pages/authen/reset-password-page";
 import HomePage from "./pages/main-home-page";
 import Layout from "./components/layout";
 import ProfilePage from "./pages/profile-user-page";
+import AddProjectTask from "./pages/add-project-task-page";
 
 
 
@@ -28,6 +29,10 @@ const App = () => {
          {
           path: 'profile-page',
           element: <ProfilePage />
+        },
+         {
+          path: 'add-projects-tasks',
+          element: <AddProjectTask />
         }
       ]
     },

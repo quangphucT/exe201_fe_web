@@ -18,7 +18,7 @@ const Header = () => {
         size="large"
       />
       <div className="user-actions">
-        <Button
+        <Button onClick={() => navigate("add-projects-tasks")}
           type="primary"
           icon={<PlusOutlined />}
           className="add-task-btn"
