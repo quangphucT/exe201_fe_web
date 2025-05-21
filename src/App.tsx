@@ -8,10 +8,24 @@ import RegisterPage from "./pages/authen/register";
 import HomePageIntro from "./pages/home-page-intro";
 import HomePageLetStart from "./pages/home-page-let-start";
 import ForgotPasswordPage from "./pages/authen/forgot-account-page";
+import ResetPasswordPage from "./pages/authen/reset-password-page";
+import HomePage from "./pages/main-home-page";
+import Layout from "./components/layout";
+
 
 
 const App = () => {
   const router = createBrowserRouter([
+    {
+      path: '/home',
+      element: <Layout/>,
+      children: [
+        {
+          path: '',
+          element: <HomePage />
+        }
+      ]
+    },
 
     {
       path: "/",
@@ -24,6 +38,10 @@ const App = () => {
     {
       path: 'forgot-password',
       element: <ForgotPasswordPage />
+    },
+    {
+      path: 'reset-password',
+      element: <ResetPasswordPage />
     },
     {
       path: '/login-page',
