@@ -1,9 +1,29 @@
-
+import './index.scss';
+import { Row, Col } from 'antd';
+import { HomeOutlined, PlusOutlined, CalendarOutlined, TeamOutlined } from '@ant-design/icons';
 
 const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <footer className="footer">
+      <Row justify="space-around" align="middle" className="nav-icons">
+        <Col>
+          <HomeOutlined className="footer-icon active" />
+        </Col>
+        <Col>
+          <PlusOutlined className="footer-icon" />
+        </Col>
+        <Col>
+          <CalendarOutlined className="footer-icon" />
+        </Col>
+        <Col>
+          <TeamOutlined className="footer-icon" />
+        </Col>
+      </Row>
+      <div className="copyright">
+        <p>© 2025 Todo List - Powered by Creativity.</p>
+      </div>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
