@@ -39,6 +39,7 @@
   display: flex;
   align-items: center;
   gap: 15px; /* Khoảng cách giữa các phần tử */
+  
 }
 
 .add-task-btn {
@@ -57,6 +58,10 @@
 .user-avatar {
   background-color: #ffe0b2; /* Cam nhạt hơn */
   cursor: pointer;
+  &:hover{
+    text-transform: all 1.5s;
+    transform: scale(1.09);
+  }
 }
 
 /* Responsive design */

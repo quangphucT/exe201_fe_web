@@ -11,6 +11,7 @@ import ForgotPasswordPage from "./pages/authen/forgot-account-page";
 import ResetPasswordPage from "./pages/authen/reset-password-page";
 import HomePage from "./pages/main-home-page";
 import Layout from "./components/layout";
+import ProfilePage from "./pages/profile-user-page";
 
 
 
@@ -23,6 +24,10 @@ const App = () => {
         {
           path: '',
           element: <HomePage />
+        },
+         {
+          path: 'profile-page',
+          element: <ProfilePage />
         }
       ]
     },
