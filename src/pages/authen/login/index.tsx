@@ -22,7 +22,7 @@ const LoginPage = () => {
                     <Input placeholder="Email" className="input" />
                     <Input.Password placeholder="Password" className="input" />
 
-                    <p className="forgot">I forgot my account</p>
+                    <p className="forgot" onClick={()=> navigate("/forgot-password")}>I forgot my account</p>
 
                     <p onClick={() => navigate("/register-page")} className="signup-text">
                         Don’t have any account? <span>Make one</span>

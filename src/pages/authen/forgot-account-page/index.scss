@@ -1,0 +1,64 @@
+/* Định kiểu cho toàn bộ trang */
+.forgot-password-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Chiều cao full màn hình */
+  background-color: #fff; /* Nền trắng */
+}
+
+/* Định kiểu cho phần nội dung */
+.forgot-password-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Căn trái các phần tử con */
+  max-width: 400px; /* Giới hạn chiều rộng để dễ đọc */
+  padding: 20px; /* Khoảng cách bên trong */
+}
+
+/* Tiêu đề chính */
+.main-title {
+  font-size: 24px; /* Kích thước chữ lớn */
+  font-weight: bold; /* Chữ đậm */
+  color: #333; /* Màu xám đậm */
+  margin-bottom: 10px; /* Khoảng cách dưới */
+}
+
+/* Mô tả */
+.description {
+  font-size: 16px; /* Kích thước chữ nhỏ hơn */
+  color: #666; /* Màu xám nhạt */
+  margin-bottom: 20px; /* Khoảng cách dưới */
+}
+
+/* Form */
+.forgot-password-form {
+  width: 100%; /* Chiếm toàn bộ chiều rộng của container */
+}
+
+/* Trường nhập email */
+.email-input {
+  width: 100%; /* Full chiều rộng */
+  padding: 10px; /* Khoảng cách bên trong */
+  background-color: #ffe5b4; /* Màu cam nhạt cho nền */
+  border: none; /* Không viền */
+  border-radius: 5px; /* Góc bo tròn */
+  margin-bottom: 20px; /* Khoảng cách dưới */
+  font-size: 16px; /* Kích thước chữ */
+  color: #333; /* Màu chữ */
+  &::placeholder {
+    color: #999; /* Màu chữ placeholder */
+  }
+}
+
+/* Nút Continue */
+.continue-button {
+  width: 100%; /* Full chiều rộng */
+  padding: 10px; /* Khoảng cách bên trong */
+  background-color: #ff6600; /* Màu cam đậm */
+  color: #fff; /* Chữ trắng */
+  border: none; /* Không viền */
+  border-radius: 5px; /* Góc bo tròn */
+  font-size: 16px; /* Kích thước chữ */
+  cursor: pointer; /* Con trỏ chuột khi hover */
+}

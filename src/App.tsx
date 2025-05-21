@@ -7,6 +7,7 @@ import RegisterPage from "./pages/authen/register";
 
 import HomePageIntro from "./pages/home-page-intro";
 import HomePageLetStart from "./pages/home-page-let-start";
+import ForgotPasswordPage from "./pages/authen/forgot-account-page";
 
 
 const App = () => {
@@ -16,9 +17,13 @@ const App = () => {
       path: "/",
       element: <HomePageIntro />,
     },
-     {
+    {
       path: "/home-page-lets-start",
       element: <HomePageLetStart />,
+    },
+    {
+      path: 'forgot-password',
+      element: <ForgotPasswordPage />
     },
     {
       path: '/login-page',
