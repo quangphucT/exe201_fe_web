@@ -1,0 +1,106 @@
+.register-page {
+    background: #f2f2f2;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .register-container {
+        background: #fff;
+        width: 320px;
+        padding: 24px 16px;
+        border-radius: 8px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+        .back-icon {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .bee-image img {
+            width: 100px;
+            margin: 24px auto 16px;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            .input {
+                border-radius: 8px;
+                background-color: #facc88;
+
+                input {
+                    background: transparent;
+                    color: #000;
+                    font-weight: 500;
+
+                    &::placeholder {
+                        color: #fff;
+                    }
+                }
+            }
+
+            .social-buttons {
+                display: flex;
+                gap: 8px;
+                margin-top: 4px;
+
+                .facebook {
+                    flex: 1;
+                    background: #3b5998;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 6px;
+                    border: none;
+                }
+
+                .google {
+                    flex: 1;
+                    background: #fff;
+                    color: #000;
+                    border: 1px solid #ccc;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 6px;
+                }
+            }
+
+            .signin-text {
+                font-size: 13px;
+                color: #666;
+                span {
+                    color: #f9a825;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+
+            .submit-btn {
+                margin-top: 12px;
+                background-color: #f9a825;
+                border: none;
+                font-weight: bold;
+                font-size: 16px;
+                border-radius: 12px;
+                height: 44px;
+            }
+        }
+    }
+}
