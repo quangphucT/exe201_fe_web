@@ -1,18 +1,43 @@
 import './index.scss';
-import { Form, Input, Button, Typography, Space } from 'antd';
-import { FaFacebookF } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
+import { Form, Input, Button, Typography } from 'antd';
+
 import logoBee from '../../../assets/images/1740063267602.gif';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'antd/es/form/Form';
+import { toast } from 'react-toastify';
+import api from '../../../config/api';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { saveInformation } from '../../../redux/feature/userSlice';
 
 const { Title, Text } = Typography;
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [form] = useForm();
+  const [loading, setLoading] = useState(false)
+  const dispatch = useDispatch();
+  const onFinish = async (values: any) => {
 
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
-    // TODO: handle login
+    setLoading(true)
+    try {
+      const response = await api.post('login', values)
+      const dataUser = response.data.data;
+      const { token, role } = dataUser
+      localStorage.setItem("token", token)
+      if (role === 'FREE') {
+        navigate("/home")
+      } else if (role === 'ADMIN') {
+        navigate("/dashboard")
+      }
+      dispatch(saveInformation(dataUser))
+      console.log("dataUser:", dataUser)
+      toast.success("Login successfully")
+
+    } catch (error) {
+      toast.error(error.response.data)
+    }
+    setLoading(false)
   };
 
   return (
@@ -25,17 +50,17 @@ const LoginPage = () => {
 
         <Title level={2} className="title">Welcome back!</Title>
 
-        <Form
+        <Form form={form}
           name="login-form"
           layout="vertical"
           className="login-form"
           onFinish={onFinish}
         >
           <Form.Item
-            name="email"
-            rules={[{ required: true, message: 'Please input your email!' }]}
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
           >
-            <Input placeholder="Email" className="input" />
+            <Input placeholder="username" className="input" />
           </Form.Item>
 
           <Form.Item
@@ -51,7 +76,7 @@ const LoginPage = () => {
             </Text>
           </div>
 
-          <Button onClick={() => navigate("/home")} type="primary" htmlType="submit" block className="submit-btn">
+          <Button loading={loading} onClick={() => form.submit()} type="primary" block className="submit-btn">
             Do it!
           </Button>
 
@@ -59,16 +84,7 @@ const LoginPage = () => {
             Don’t have any account? <span>Make one</span>
           </Text>
 
-          <div className="social-buttons">
-            <Space direction="vertical" style={{ width: '100%' }}>
-              <Button icon={<FaFacebookF />} block className="facebook">
-                Facebook
-              </Button>
-              <Button icon={<FcGoogle />} block className="google">
-                Google
-              </Button>
-            </Space>
-          </div>
+
         </Form>
       </div>
     </div>

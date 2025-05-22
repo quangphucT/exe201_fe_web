@@ -3,7 +3,10 @@ import { Input, Avatar, Button, Image } from 'antd';
 import { UserOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import logoBee from '../../assets/images/1740063267602.gif'
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
 const Header = () => {
+  const userName = useSelector((store: RootState) => store?.user?.username)
   const navigate = useNavigate();
   return (
     <div className="header">
@@ -26,6 +29,7 @@ const Header = () => {
         >
           Add Task
         </Button>
+        <p className='username-user'>{userName}</p>
         <Avatar onClick={() => navigate("profile-page")} size="large" icon={<UserOutlined />} className="user-avatar" />
       </div>
     </div>

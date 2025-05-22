@@ -69,6 +69,20 @@
     transform: scale(1.09);
   }
 }
+.username-user {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1e88e5; // hoặc #333 nếu bạn muốn trung tính
+  margin: 0;
+  padding: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 
 /* Responsive design */
 @media (max-width: 768px) {

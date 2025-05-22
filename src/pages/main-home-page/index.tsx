@@ -1,10 +1,13 @@
 import './index.scss';
 import { Row, Col, Card, Button, Progress, Avatar } from 'antd';
-import { UserOutlined} from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
+
+import type { RootState } from '../../redux/store';
 
 const HomePage = () => {
   const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }); // Hiển thị ngày hiện tại
-
+  const username = useSelector((store: RootState) => store?.user?.username)
   return (
     <div className="homepage">
       <div className="header-home-main">
@@ -13,7 +16,7 @@ const HomePage = () => {
             <Avatar size={64} icon={<UserOutlined />} />
           </Col>
           <Col>
-            <h2>Hello! <span className="username">Phuong Thanh</span></h2>
+            <h2>Hello! <span className="username">{username}</span></h2>
           </Col>
         </Row>
       </div>
@@ -53,7 +56,7 @@ const HomePage = () => {
           <p>Team Project <span>3 Task</span></p>
         </Card>
       </div>
-   
+
     </div>
   );
 };

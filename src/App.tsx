@@ -13,33 +13,46 @@ import HomePage from "./pages/main-home-page";
 import Layout from "./components/layout";
 import ProfilePage from "./pages/profile-user-page";
 import AddProjectTask from "./pages/add-project-task-page";
+import { ToastContainer } from "react-toastify";
+import PublicRoute from "./pages/protect-route";
+import PrivateRoute from "./pages/private-route";
+
 
 
 
 const App = () => {
   const router = createBrowserRouter([
+
     {
       path: '/home',
-      element: <Layout/>,
+      element: <Layout />,
       children: [
         {
           path: '',
           element: <HomePage />
         },
-         {
+        {
           path: 'profile-page',
           element: <ProfilePage />
         },
-         {
+        {
           path: 'add-projects-tasks',
           element: <AddProjectTask />
         }
       ]
     },
 
+
     {
       path: "/",
-      element: <HomePageIntro />,
+      element:
+
+        (
+          <PublicRoute>
+            <HomePageIntro />
+          </PublicRoute>
+        )
+
     },
     {
       path: "/home-page-lets-start",
@@ -63,17 +76,26 @@ const App = () => {
     },
     {
       path: '/dashboard',
-      element: <DashboardPage />,
+      element: (
+        <PrivateRoute>
+          <DashboardPage />,
+          
+        </PrivateRoute>
+      ),
       children: [
         {
           path: 'statistic',
           element: <StatisticsManagement />
         }
       ]
+      
     }
   ]);
   return (
-    <RouterProvider router={router} />
+    <div>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </div>
   )
 }
 

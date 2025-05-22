@@ -2,8 +2,14 @@ import './index.scss';
 import { Row, Col, Card, Avatar, Progress, Button, Statistic } from 'antd';
 import { EditOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Bar } from '@ant-design/charts';
+import { useDispatch } from 'react-redux';
+import { removeInformation } from '../../redux/feature/userSlice';
+import { useNavigate } from 'react-router-dom';
+
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // Dữ liệu giả cho biểu đồ cột Weekly Performance
   const barData = [
     { day: 'Mon', tasks: 5 },
@@ -25,7 +31,11 @@ const ProfilePage = () => {
       style: { fill: '#fff' },
     },
   };
-
+  const handleLogout = () => {
+    dispatch(removeInformation())
+    navigate("/login-page");
+    localStorage.setItem("token", '')
+  }
   return (
     <div className="profile-page">
 
@@ -56,7 +66,7 @@ const ProfilePage = () => {
                   >
                     Edit Profile
                   </Button>
-                  <Button
+                  <Button onClick={handleLogout}
                     type="default"
                     icon={<LogoutOutlined />}
                     className="action-btn logout-btn"

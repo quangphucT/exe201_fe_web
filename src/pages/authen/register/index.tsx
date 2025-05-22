@@ -1,19 +1,31 @@
 import './index.scss';
-import { Form, Input, Button, Typography, Space } from 'antd';
-import { FaFacebookF } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
+import { Form, Input, Button, Typography } from 'antd';
+
 import logoBee from '../../../assets/images/1740063267602.gif';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'antd/es/form/Form';
+import api from '../../../config/api';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const { Title, Text } = Typography;
 
 const RegisterPage = () => {
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
-
-  const onFinish = (values: any) => {
-    console.log('Register values:', values);
-    // TODO: handle register
+  const [form] = useForm();
+  const onFinish = async (values: any) => {
+    setLoading(true)
+    try {
+      await api.post('register', values)
+      toast.success("Register successfully!")
+      navigate("/login-page")
+    } catch (error) {
+      toast.error(error.response.data.message)
+    }
+    setLoading(false)
   };
+
 
   return (
     <div className="register-page">
@@ -24,28 +36,20 @@ const RegisterPage = () => {
 
         <Title level={2} className="title">Ready to<br />take breaks?</Title>
 
-        <Form
+        <Form form={form}
           name="register-form"
           layout="vertical"
           className="register-form"
           onFinish={onFinish}
         >
           <Form.Item
-            name="name"
-            rules={[{ required: true, message: 'Please enter your name' }]}
+            name="username"
+            rules={[{ required: true, message: 'Please enter your username' }]}
           >
-            <Input placeholder="Your Name" className="input" />
+            <Input placeholder="Your Username" className="input" />
           </Form.Item>
 
-          <Form.Item
-            name="email"
-            rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Email is not valid' },
-            ]}
-          >
-            <Input placeholder="Email" className="input" />
-          </Form.Item>
+
 
           <Form.Item
             name="password"
@@ -54,22 +58,13 @@ const RegisterPage = () => {
             <Input.Password placeholder="Password" className="input" />
           </Form.Item>
 
-          <div className="social-buttons">
-            <Space direction="vertical" style={{ width: '100%' }}>
-              <Button icon={<FaFacebookF />} className="facebook" block>
-                Facebook
-              </Button>
-              <Button icon={<FcGoogle />} className="google" block>
-                Google
-              </Button>
-            </Space>
-          </div>
+
 
           <Text className="signin-text" onClick={() => navigate("/login-page")}>
             Already have an account? <span>Sign In</span>
           </Text>
 
-          <Button type="primary" htmlType="submit" className="submit-btn" block>
+          <Button loading={loading} onClick={() => form.submit()} type="primary" className="submit-btn" block>
             I’m Ready!
           </Button>
         </Form>
